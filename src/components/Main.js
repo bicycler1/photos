@@ -1,6 +1,10 @@
 require('normalize.css/normalize.css');
 require('styles/App.css');
 
+//引入函数库
+require('../functionSql/functionSql.js');
+
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -19,8 +23,7 @@ class ImageFigure extends React.Component{
 	render(){
 		return(
 			<figure>
-				<img src={this.props.data.imageURL}
-						 alt={this.props.data.title}
+				<img src={this.props.data.imageURL} alt={this.props.data.title}
 				/>
 				<figcaption>
 					<h2>
@@ -36,11 +39,12 @@ class AppComponent extends React.Component {
   render() {
   	var imageFigures=[];
   	
-  
-  	imageDatas.forEach(function (v,k){
-  		imageFigures.push(<ImageFigure data={v} key={k}/>);
-  	});
+  	function pushImageFigures(item){
+			imageFigures.push(<ImageFigure data={item}/>);
+		}
   	
+  	imageDatas.forEach(pushImageFigures);
+    
     return (
       <div className="stage">
       	<section className="img-sec">
@@ -54,6 +58,22 @@ class AppComponent extends React.Component {
   }
 }
 
+class App2 extends React.Component{
+	render(){
+		return(
+			<div>
+				{this.props.name}
+			</div>
+		);
+	}
+}
+class App1 extends React.Component{
+	render(){
+		return(
+			<App2 name="hahahh"/>
+		);
+	}
+}
 
 AppComponent.defaultProps = {
 };
