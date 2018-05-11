@@ -22,15 +22,7 @@ imageDatas=(function (imageArr){
 class ImageFigure extends React.Component{
 	render(){
 		return(
-			<figure>
-				<img src={this.props.data.imageURL} alt={this.props.data.title}
-				/>
-				<figcaption>
-					<h2>
-						{this.props.data.title}
-					</h2>
-				</figcaption>
-			</figure>
+			<img src={this.props.data.imageURL}/>
 		);
 	}
 }
@@ -40,7 +32,7 @@ class AppComponent extends React.Component {
   	var imageFigures=[];
   	
   	function pushImageFigures(item){
-			imageFigures.push(<ImageFigure data={item}/>);
+			imageFigures.push(<ImageFigure data={item} />);
 		}
   	
   	imageDatas.forEach(pushImageFigures);
@@ -76,6 +68,7 @@ class App1 extends React.Component{
 }
 
 AppComponent.defaultProps = {
+
 };
 
 export default AppComponent;
